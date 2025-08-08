@@ -64,7 +64,7 @@
                                     } catch (e) {
                                         r[s] || (0, n.R)(1, e)
                                     }
-                                    return r
+                                return r
                             } catch (e) {
                                 (0, n.R)(2, e)
                             }
@@ -1990,10 +1990,59 @@
     <!-- / Yoast SEO Premium plugin. -->
 
 
+    <!-- Update CSS links to use remote URLs -->
     <link rel='stylesheet' id='gn-frontend-gnfollow-style-css' href='https://www.sammobile.com/wp-content/plugins/gn-publisher/assets/css/gn-frontend-gnfollow.min.css?ver=1.5.23' type='text/css' media='all' />
     <link rel='stylesheet' id='vendor-css' href='https://www.sammobile.com/wp-content/themes/sammobile-7/dist/css/vendor/vendor.min.css?ver=d547d969b00de689e34b2f637f5d2847' type='text/css' media='all' />
     <link rel='stylesheet' id='main-above-css' href='https://www.sammobile.com/wp-content/themes/sammobile-7/dist/css/main/above/main-above.min.7979.css?ver=d547d969b00de689e34b2f637f5d2847' type='text/css' media='all' />
     <link rel='stylesheet' id='sam-releases-css' href='https://www.sammobile.com/wp-content/plugins/sam-releases/css/sam-releases.css?ver=111' type='text/css' media='all' />
+
+    <!-- ...existing code... -->
+
+    <!-- Update script sources to use remote URLs -->
+    <script>
+        // Update jQuery and other script sources
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all script tags
+            const scripts = document.querySelectorAll('script[src]');
+            scripts.forEach(script => {
+                if (script.src && !script.src.startsWith('http')) {
+                    script.src = getRemoteUrl(script.src);
+                }
+            });
+
+            // Get all link tags for stylesheets
+            const links = document.querySelectorAll('link[href]');
+            links.forEach(link => {
+                if (link.href && !link.href.startsWith('http')) {
+                    link.href = getRemoteUrl(link.href);
+                }
+            });
+
+            // Update image sources
+            const images = document.querySelectorAll('img[src]');
+            images.forEach(img => {
+                if (img.src && !img.src.startsWith('http')) {
+                    img.src = getRemoteUrl(img.src);
+                }
+            });
+
+            // Update form actions
+            const forms = document.querySelectorAll('form[action]');
+            forms.forEach(form => {
+                if (form.action && !form.action.startsWith('http')) {
+                    form.action = getRemoteUrl(form.action);
+                }
+            });
+
+            // Update anchor href attributes for AJAX calls
+            const links_ajax = document.querySelectorAll('a[href]');
+            links_ajax.forEach(link => {
+                if (link.href && link.href.startsWith('/') && !link.href.startsWith('//')) {
+                    link.href = getRemoteUrl(link.href);
+                }
+            });
+        });
+    </script>
     <script type="text/javascript" src="https://www.sammobile.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
     <script type="text/javascript" src="https://www.sammobile.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
     <link rel="https://api.w.org/" href="https://www.sammobile.com/wp-json/" />
@@ -4132,11 +4181,13 @@
         {"prerender":[{"source":"document","where":{"and":[{"href_matches":"\/*"},{"not":{"href_matches":["\/wp-*.php","\/wp-admin\/*","\/wp-content\/uploads\/*","\/wp-content\/*","\/wp-content\/plugins\/*","\/wp-content\/themes\/sammobile-7\/*","\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prerender,
         .no-prerender a"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"moderate"}]}
     </script>
+    <!-- Update CSS links at bottom -->
     <link rel='stylesheet' id='main-below-css' href='https://www.sammobile.com/wp-content/themes/sammobile-7/dist/css/main/below/main-below.min.2aeb.css?ver=d547d969b00de689e34b2f637f5d2847' type='text/css' media='all' />
+    <!-- Update inline script variables to use remote URLs -->
     <script type="text/javascript" id="vendor-js-extra">
         /* <![CDATA[ */
         var wp_ajax = {
-            "ajax_url": "https:\/\/www.sammobile.com\/wp-admin\/admin-ajax.php"
+            "ajax_url": "https://www.sammobile.com/wp-admin/admin-ajax.php"
         };
         /* ]]> */
     </script>
@@ -4144,11 +4195,11 @@
     <script type="text/javascript" id="main-js-extra">
         /* <![CDATA[ */
         var wp_theme = {
-            "stylesheet_directory_uri": "https:\/\/www.sammobile.com\/wp-content\/themes\/sammobile-7"
+            "stylesheet_directory_uri": "https://www.sammobile.com/wp-content/themes/sammobile-7"
         };
         var sammobile_loadmore_params = {
-            "ajaxurl": "https:\/\/www.sammobile.com\/wp-admin\/admin-ajax.php",
-            "apiurl": "https:\/\/api.sammobile.com"
+            "ajaxurl": "https://www.sammobile.com/wp-admin/admin-ajax.php",
+            "apiurl": "https://api.sammobile.com"
         };
         /* ]]> */
     </script>
@@ -4157,10 +4208,10 @@
     <script type="text/javascript" id="firmware-page-script-js-extra">
         /* <![CDATA[ */
         var firmware_page = {
-            "ajaxurl": "https:\/\/www.sammobile.com\/wp-content\/plugins\/sam-firmwarepage\/includes\/SMFirmware\/ajax\/"
+            "ajaxurl": "https://www.sammobile.com/wp-content/plugins/sam-firmwarepage/includes/SMFirmware/ajax/"
         };
         var firmware_page_api = {
-            "apiurl": "https:\/\/api.sammobile.com"
+            "apiurl": "https://api.sammobile.com"
         };
         /* ]]> */
     </script>
